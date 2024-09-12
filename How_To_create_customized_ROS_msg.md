@@ -136,10 +136,13 @@ pub_test1_pose6dof.publish(test1_msg);
 from teng4pkg_msgs.msg import PoseCartesian6DOF
 
 # Publishing a custom message
-pose_msg1 = Position()
-pose_msg1.x = 1.0
-pose_msg1.y = 2.0
-pose_msg1.z = 3.0
+test1_msg = Position()
+test1_msg.x = 1.11;
+test1_msg.y = 1.11;
+test1_msg.z = 1.11;
+test1_msg.a = 1.11;
+test1_msg.b = 1.11;
+test1_msg.g = 1.11;
 ```
 
 ## 8. Verify the Custom Message
