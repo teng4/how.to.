@@ -174,6 +174,17 @@ echo $ROS_PACKAGE_PATH
 source devel/setup.bash
 ```
 
+## 9. Error Debugging.
+
+You may encounter some errors when `rostopic echo /your_topic` the customized ROS msg. For example,
+
+> $ rostopic echo /teng4/test1_pose6dof
+> 
+> ERROR: Cannot load message class for [teng4pkg_msgs/PoseCartesian6DOF]. Are your messages built?
+> 
+> **SOLUTION:**
+> This error is caused by wrong catkin_ws in terminal. You need to get into the correct catkin_ws2 ($cd catkin_ws2; $cd ~/catkin_ws2), and then "rostopic echo /teng4/test1_pose6dof " will work.
+
 ## Summary
 
 - Create a ROS package in `catkin_ws/src`.
