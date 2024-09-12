@@ -184,6 +184,12 @@ You may encounter some errors when `rostopic echo /your_topic` the customized RO
 > 
 > **SOLUTION:**
 > This error is caused by wrong catkin_ws in terminal. You need to get into the correct catkin_ws2 ($cd catkin_ws2; $cd ~/catkin_ws2), and then "rostopic echo /teng4/test1_pose6dof " will work.
+> 
+> $ cd ~/catkin_ws2
+> 
+> $ source devel/setup.bash
+> 
+> $ rostopic echo /teng4/test1_pose6dof
 
 ## Summary
 
