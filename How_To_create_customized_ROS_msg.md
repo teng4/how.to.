@@ -176,7 +176,7 @@ source devel/setup.bash
 
 ## Summary
 
-- Create a ROS package.
+- Create a ROS package in `catkin_ws/src`.
 - Create a `msg` directory and define your custom `.msg` file.
 - Update the `CMakeLists.txt` and `package.xml` to include message generation.
 - Build your workspace with `catkin_make`.
