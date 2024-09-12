@@ -1,5 +1,15 @@
 # How To get rotation matrix from PRY angles
 
+## Summary
+
+- (1) The resulted matrix R_A_B is (new {B} expressed in old {A} frame), means it may need transpose R_A_B first in order to calculate xyz in new frame.
+- (2) Roll-X, Pitch-Y, Yaw-Z, always true.
+- (3) Positive/negative rotation angles are based on right-hand rule, correct.
+- (4) ZYX-euler angles are first rotate around Z, then Y, then X. (Remember, ZYX each time always rotate around the updated frame.)')
+- (5) ZYX-euler angles are SAME as the RPY where Z(yaw)Y(pitch)X(roll).
+
+## Code (MATLAB)
+
 The following MATLAB code help you calculate rotation matrix (3x3) from RPY angles.
 
 ```
@@ -67,14 +77,6 @@ disp('(4) ZYX-euler angles are first rotate around Z, then Y, then X.')
 disp('      (Remember, ZYX each time always rotate around the updated frame.)')
 disp('(5) ZYX-euler angles are SAME as the RPY where Z(yaw)Y(pitch)X(roll).')
 ```
-
-## Summary
-
-- (1) The resulted matrix R_A_B is (new {B} expressed in old {A} frame), means it may need transpose R_A_B first in order to calculate xyz in new frame.
-- (2) Roll-X, Pitch-Y, Yaw-Z, always true.
-- (3) Positive/negative rotation angles are based on right-hand rule, correct.
-- (4) ZYX-euler angles are first rotate around Z, then Y, then X. (Remember, ZYX each time always rotate around the updated frame.)')
-- (5) ZYX-euler angles are SAME as the RPY where Z(yaw)Y(pitch)X(roll).
 
 ------
 Created on 2024-09-12.
