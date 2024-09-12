@@ -117,16 +117,17 @@ Now, you can use your custom message type in your ROS nodes.
 
 ```
 // teng4note, the Position.h may not be easy to find or even not exist. But it does not matter.
-#include "my_custom_msgs/Position.h"
+#include "teng4pkg_msgs/PoseCartesian6DOF.h"
 
 // Publishing a custom message
-teng4pkg_msgs::PoseCartesian6DOF pose_msg1;
-pose_msg1.x = 1.0;
-pose_msg1.y = 2.0;
-pose_msg1.z = 3.0;
-pose_msg1.a = 4.0;
-pose_msg1.b = 5.0;
-pose_msg1.g = 6.0;
+teng4pkg_msgs::PoseCartesian6DOF test1_msg;
+test1_msg.x = 1.11;
+test1_msg.y = 1.11;
+test1_msg.z = 1.11;
+test1_msg.a = 1.11;
+test1_msg.b = 1.11;
+test1_msg.g = 1.11;
+pub_test1_pose6dof.publish(test1_msg);
 ```
 
 **Python Example:**
