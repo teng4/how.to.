@@ -188,6 +188,10 @@ You may encounter some errors when `rostopic echo /your_topic` the customized RO
 > $ cd ~/catkin_ws2
 > 
 > $ source devel/setup.bash
+>
+> $ echo $ROS_PACKAGE_PATH
+>
+> $ rostopic list
 > 
 > $ rostopic echo /teng4/test1_pose6dof
 
