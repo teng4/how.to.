@@ -1,4 +1,4 @@
-# How To create a customized ROS msg in a catkin_ws?
+# How To create a customized ROS msg in a `catkin_ws`?
 
 In ROS, custom message types are defined using `.msg` files, which are stored in a package's msg folder. These message types allow you to define custom data structures that can be used for inter-node communication. Below is a guide on how to create and use custom message types in a `catkin_ws` workspace.
 
@@ -10,17 +10,17 @@ First, create a package in your `catkin_ws` workspace. This package will hold yo
 
 ```
 cd ~/catkin_ws/src
-catkin_create_pkg my_custom_msgs std_msgs rospy roscpp
+catkin_create_pkg teng4pkg_msgs std_msgs rospy roscpp
 ```
 
-Here, `my_custom_msgs` is the package name, and it depends on `std_msgs`, `rospy`, and `roscpp`.
+Here, `teng4pkg_msgs` is the package name, and it depends on `std_msgs`, `rospy`, and `roscpp`.
 
 ## 2. Create a `msg` Directory
 
 Inside your package, create a `msg` folder where your custom message types will be defined.
 
 ```
-cd ~/catkin_ws/src/my_custom_msgs
+cd ~/catkin_ws/src/teng4pkg_msgs
 mkdir msg
 ```
 
@@ -28,18 +28,21 @@ mkdir msg
 
 Inside the `msg` folder, create a file with a `.msg` extension. This file defines your custom message type.
 
-Example: `Position.ms`
+Example: `PoseCartesian6DOF.ms`
 
 ```
-gedit msg/Position.msg
+gedit msg/PoseCartesian6DOF.msg
 ```
 
-Inside `Position.msg`, define the structure of the message. For example, for a 3D position:
+Inside `PoseCartesian6DOF.msg`, define the structure of the message. For example, for a 6D cartesian pose:
 
 ```
 float64 x
 float64 y
 float64 z
+float64 a
+float64 b
+float64 g
 ```
 
 Each line defines a field in the message, with the type followed by the field name.
@@ -64,7 +67,7 @@ find_package(catkin REQUIRED COMPONENTS
 ```
 add_message_files(
   FILES
-  Position.msg
+  PoseCartesian6DOF.msg
 )
 ```
 
@@ -117,22 +120,25 @@ Now, you can use your custom message type in your ROS nodes.
 #include "my_custom_msgs/Position.h"
 
 // Publishing a custom message
-my_custom_msgs::Position position_msg;
-position_msg.x = 1.0;
-position_msg.y = 2.0;
-position_msg.z = 3.0;
+teng4pkg_msgs::PoseCartesian6DOF pose_msg1;
+pose_msg1.x = 1.0;
+pose_msg1.y = 2.0;
+pose_msg1.z = 3.0;
+pose_msg1.a = 4.0;
+pose_msg1.b = 5.0;
+pose_msg1.g = 6.0;
 ```
 
 **Python Example:**
 
 ```
-from my_custom_msgs.msg import Position
+from teng4pkg_msgs.msg import PoseCartesian6DOF
 
 # Publishing a custom message
-position_msg = Position()
-position_msg.x = 1.0
-position_msg.y = 2.0
-position_msg.z = 3.0
+pose_msg1 = Position()
+pose_msg1.x = 1.0
+pose_msg1.y = 2.0
+pose_msg1.z = 3.0
 ```
 
 ## 8. Verify the Custom Message
