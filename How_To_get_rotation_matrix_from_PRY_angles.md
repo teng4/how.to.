@@ -2,10 +2,10 @@
 
 ## Summary
 
-- (1) The resulted matrix `R_A_B` is (new {B} expressed in old {A} frame), which means it may need **transpose** `R_A_B` first in order to calculate the position xyz in new frame (e.g., `P_B = R_B_A * P_A`).
+- (1) The resulted matrix `R_A_B` is (new {B} expressed in old {A} frame), which means it may need **transpose** `R_A_B` first in order to calculate the position xyz in new {B} frame (e.g., `P_B = R_B_A * P_A`).
 - (2) Roll-X, Pitch-Y, Yaw-Z, always true.
 - (3) Positive/negative rotation angles are based on right-hand rule, correct.
-- (4) ZYX-euler angles are first rotate around Z, then Y, then X. (Remember, ZYX each time always rotate around the updated frame.)')
+- (4) ZYX-euler angles are first rotate around Z, then Y, then X. (Remember, ZYX each time always rotate the updated frame.)')
 - (5) ZYX-euler angles are SAME as the RPY where Z(yaw)Y(pitch)X(roll).
 
 ## Code (MATLAB)
