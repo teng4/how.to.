@@ -28,7 +28,7 @@ mkdir msg
 
 Inside the `msg` folder, create a file with a `.msg` extension. This file defines your custom message type.
 
-Example: `PoseCartesian6DOF.ms`
+Example: `PoseCartesian6DOF.msg`
 
 ```
 gedit msg/PoseCartesian6DOF.msg
