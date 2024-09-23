@@ -48,11 +48,11 @@ using UnityEngine;
 
 using System;
 using RosMessageTypes.Geometry;
-using RosMessageTypes.Mynewpkg; //note, use your customized msg-type if necessary.
+using RosMessageTypes.Teng4pkg; //teng4note, Change to your own package folder name here! (find it in Assets/RosMessages/)
+using Unity.Robotics;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using Unity.Robotics.UrdfImporter;
-using Unity.Robotics;
 using Unity.Robotics.UrdfImporter.Control;
 
 public class ROSDataReceiver : MonoBehaviour
@@ -61,8 +61,8 @@ public class ROSDataReceiver : MonoBehaviour
     
     // Required for ROS communication
     [SerializeField]
-    string m_SubscriberName = "/arm_target1"; //note, /arm_target1 is command values in Arm_State.msg type. [joint_1_angle,.., joint_2_angle].
-    GameObject myRobot; //note, this will be defined by selecting the robot object as its 'value'.
+    string m_SubscriberName = "/arm_target1"; //note, '/arm_target1' is ROS topic message in customized 'Arm_State.msg' type. [joint_1_angle,.., joint_2_angle].
+    GameObject myRobot; //teng4note, this will be defined by selecting the robot object as its 'value'.
     public float data_received_a1 = 0.0f; //to display the received ROS data.
     public float data_received_a2 = 0.0f; //to display the received ROS data.
     public float data_received_a3 = 0.0f; //to display the received ROS data.
@@ -71,15 +71,16 @@ public class ROSDataReceiver : MonoBehaviour
     public float data_received_a6 = 0.0f; //to display the received ROS data.
    
     // ROS Connector
-    ROSConnection m_Ros;        
-    
+    ROSConnection m_Ros;
+
+
     // Start is called before the first frame update
     void Start()
     {
         //Get ROS connection static instance
         m_Ros = ROSConnection.GetOrCreateInstance();
         
-        //Get the Controller.cs component from robot
+        //Get the Controller.cs component from robot object
         //controller = myRobot.GetComponent<Controller>(); //this retrieves the Controller.cs attached to the robot object.        
         //print("test, controller.name=: " + controller.name);
     }
@@ -89,8 +90,8 @@ public class ROSDataReceiver : MonoBehaviour
     {
         //Receiving data from ROS node.
         m_Ros.Subscribe<Arm_StateMsg>(m_SubscriberName, MsgDataProcessing);
-    }    
-    
+    }
+
     void MsgDataProcessing(Arm_StateMsg dataMsg){ 
         data_received_a1 = (float)dataMsg.joint_1_angle; //to display the received ROS data.
         data_received_a2 = (float)dataMsg.joint_2_angle; //to display the received ROS data.
@@ -119,7 +120,7 @@ $ echo $ROS_PACKAGE_PATH
 $ cd catkin_ws2
 $ source devel/setup.bash
 $ echo $ROS_PACKAGE_PATH
-$ roslaunch omni_common omni_state4.launch //this will publish data to ROS. And now you should be able to receive data in Unity “ROSDataReceiver” object.
+$ roslaunch omni_common omni_state4.launch //this will publish data to ROS. And now the received data in Unity can be observed in “ROSDataReceiver” object.
 ```
 
 ## Notes.
