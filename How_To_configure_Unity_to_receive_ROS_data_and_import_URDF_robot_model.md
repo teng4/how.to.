@@ -30,7 +30,7 @@ In Unity top menu, find `Robotics` --> `Generate ROS Message`.
 
 - For `ROS message path`, click `Browse` to find the msg definitions folder in your specific `catkin_ws`, where the `ROS-TCP-Endpoint` package is also installed. Either use the `msg` folder or its package folder in `catkin_ws` both OK, it does not matter, will get the same results. 
 
-- For `Built message path`, click `Browse` to find the folder where you want to contain the build msg results. By default, it will be using 'unityROSproject_test1/Assets/RosMessages/mynewpkg/msg/Arm_StateMsg.cs'
+- For `Built message path`, click `Browse` to find the folder where you want to contain the build msg results. By default, it will be using 'unityROSproject_test1/Assets/RosMessages/Mynewpkg/msg/Arm_StateMsg.cs'
 
 ## Step-4: Unity add a script to receive ROS data.
 
@@ -102,11 +102,6 @@ public class ROSDataReceiver : MonoBehaviour
 }
 ```
 
-## Notes.
-
-- Originally, `com.unity.robotics.urdf-importer@90f353e435` is located in path `youUnityProj/Library/PackageCache/`. You can copy-paste it from `Library/PackageCache` to folder `Packages` for convenience. (Note that, in it, a `Controller` folder with several controller scripts need to be modified for your own use.)
-- Automatically, the imported tool is already attached with a “Controller.cs”.
-
 ## Test Unity receives ROS data.
 
 In Terminal(s), do the following:
@@ -126,6 +121,12 @@ $ source devel/setup.bash
 $ echo $ROS_PACKAGE_PATH
 $ roslaunch omni_common omni_state4.launch //this will publish data to ROS. And now you should be able to receive data in Unity “ROSDataReceiver” object.
 ```
+
+## Notes.
+
+- Originally, `com.unity.robotics.urdf-importer@90f353e435` is located in path `youUnityProj/Library/PackageCache/`. You can copy-paste it from `Library/PackageCache` to folder `Packages` for convenience. (Note that, in it, a `Controller` folder with several controller scripts need to be modified for your own use.)
+- Automatically, the imported tool is already attached with a “Controller.cs”.
+
 
 ------
 Created on 2024-09-23.
