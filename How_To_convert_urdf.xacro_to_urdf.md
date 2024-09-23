@@ -1,6 +1,6 @@
-# How To convert ROBOT.urdf.xacro to ROBOT.urdf?
+# How To convert `ROBOT.urdf.xacro` to `ROBOT.urdf`?
 
-Terminal command to convert the ROBOT.urdf.xacro to ROBOT.urdf (open a terminal inside its folder).
+Terminal command to convert the `ROBOT.urdf.xacro` to `ROBOT.urdf` (open a terminal inside its folder).
 
 ```
 rosrun xacro xacro --inorder -o ./niryo_one.urdf ./niryo_one.urdf.xacro
