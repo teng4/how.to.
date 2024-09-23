@@ -28,13 +28,77 @@ Enter the git URL for the URDF Importer with the latest version tag (currently v
 
 In Unity top menu, find `Robotics` → `Generate ROS Message`.
 
-For `ROS message path`, click `Browse` to find the msg definitions folder in your specific `catkin_ws`, where the `ROS-TCP-Endpoint` package is also installed. Either use the `msg` folder or its package folder in `catkin_ws` both OK, it does not matter, will get the same results. 
-For `Built message path`, click `Browse` to find the folder where you want to contain the build msg results. By default, it will be using (unityROSproject_test1/Assets/RosMessages/mynewpkg/msg/Arm_StateMsg.cs)
+- For `ROS message path`, click `Browse` to find the msg definitions folder in your specific `catkin_ws`, where the `ROS-TCP-Endpoint` package is also installed. Either use the `msg` folder or its package folder in `catkin_ws` both OK, it does not matter, will get the same results. 
+
+- For `Built message path`, click `Browse` to find the folder where you want to contain the build msg results. By default, it will be using 'unityROSproject_test1/Assets/RosMessages/mynewpkg/msg/Arm_StateMsg.cs'
 
 ## Step-4: Unity add a script to receive ROS data.
 
 - Add a `Scripts` folder inside folder `Assets`.
 - Inside `Scripts` folder, create a new cs script (say, `ROSDataReceiver.cs`) to receive ROS data msg.
+
+Copy-paste the following code into `ROSDataReceiver.cs` for receiving data from ROS.
+
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using System;
+using RosMessageTypes.Geometry;
+using RosMessageTypes.Mynewpkg; //note, use your customized msg-type if necessary.
+using Unity.Robotics.ROSTCPConnector;
+using Unity.Robotics.ROSTCPConnector.ROSGeometry;
+using Unity.Robotics.UrdfImporter;
+using Unity.Robotics;
+using Unity.Robotics.UrdfImporter.Control;
+
+public class ROSDataReceiver : MonoBehaviour
+{
+    //Unity.Robotics.UrdfImporter.Control.Controller controller; //note, this "controller" is the "Controller.cs" attached to the robot object.
+    
+    // Required for ROS communication
+    [SerializeField]
+    string m_SubscriberName = "/arm_target1"; //note, /arm_target1 is command values in Arm_State.msg type. [joint_1_angle,.., joint_2_angle].
+    GameObject myRobot; //note, this will be defined by selecting the robot object as its 'value'.
+    public float data_received_a1 = 0.0f; //to display the received ROS data.
+    public float data_received_a2 = 0.0f; //to display the received ROS data.
+    public float data_received_a3 = 0.0f; //to display the received ROS data.
+    public float data_received_a4 = 0.0f; //to display the received ROS data.
+    public float data_received_a5 = 0.0f; //to display the received ROS data.
+    public float data_received_a6 = 0.0f; //to display the received ROS data.
+   
+    // ROS Connector
+    ROSConnection m_Ros;        
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Get ROS connection static instance
+        m_Ros = ROSConnection.GetOrCreateInstance();
+        
+        //Get the Controller.cs component from robot
+        //controller = myRobot.GetComponent<Controller>(); //this retrieves the Controller.cs attached to the cleft tool.        
+        //print("test, controller.name=: " + controller.name);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Receiving data from ROS node.
+        m_Ros.Subscribe<Arm_StateMsg>(m_SubscriberName, MsgDataProcessing);
+    }    
+    
+    void MsgDataProcessing(Arm_StateMsg dataMsg){ 
+        data_received_a1 = (float)dataMsg.joint_1_angle; //to display the received ROS data.
+        data_received_a2 = (float)dataMsg.joint_2_angle; //to display the received ROS data.
+        data_received_a3 = (float)dataMsg.joint_3_angle; //to display the received ROS data.
+        data_received_a4 = (float)dataMsg.joint_4_angle; //to display the received ROS data.
+        data_received_a5 = (float)dataMsg.joint_5_angle; //to display the received ROS data.
+        data_received_a6 = (float)dataMsg.joint_6_angle; //to display the received ROS data.              
+    }
+}
+```
 
 ## Notes.
 
