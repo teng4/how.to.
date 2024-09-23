@@ -7,8 +7,6 @@ Suppose, you have already had a well-configured `catkin_ws` for publishing data 
 ## Step-1: Unity add packages (ROS-TCP; Visualizations)
 (https://github.com/Unity-Technologies/ROS-TCP-Connector )
 
-Note that visualization is for visualize the ROS connection etc.
-
 Using Unity 2020.2 or later, open the Package Manager from `Window` -> `Package Manager`.
 
 In the `Package Manager` window, find and click the `+` button in the upper lefthand corner of the window. Select `Add package from git URL....`
@@ -16,7 +14,7 @@ Enter the git URL for the desired package. Note: you can append a version tag to
 
 - For the ROS-TCP-Connector, enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector`.
 
-- For Visualizations, enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.visualizations`.
+- For Visualizations, enter `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.visualizations`. Note that visualization is for visualizing the ROS connection etc (e.g., an icon displays the ROS connection status).
 
 - Click `Add`.
 
