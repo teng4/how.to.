@@ -37,6 +37,7 @@ In Unity top menu, find `Robotics` --> `Generate ROS Message`.
 - Add a `Scripts` folder inside folder `Assets`.
 - Inside `Scripts` folder, create a new cs script (say, `ROSDataReceiver.cs`) to receive ROS data msg.
 - Create an empty object in the scene, rename it as `ROSDataReceiver`, and attach the `ROSDataReceiver.cs` to it.
+- Note, the received ROS data can be observed here when doing the testing later.
 
 Copy-paste the following code into `ROSDataReceiver.cs` for receiving data from ROS.
 
