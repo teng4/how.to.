@@ -78,7 +78,7 @@ public class ROSDataReceiver : MonoBehaviour
         m_Ros = ROSConnection.GetOrCreateInstance();
         
         //Get the Controller.cs component from robot
-        //controller = myRobot.GetComponent<Controller>(); //this retrieves the Controller.cs attached to the cleft tool.        
+        //controller = myRobot.GetComponent<Controller>(); //this retrieves the Controller.cs attached to the robot object.        
         //print("test, controller.name=: " + controller.name);
     }
 
