@@ -1,6 +1,6 @@
 # How to configure Unity to receive ROS data and import URDF robot model
 
-Suppose, you have already had a well-configured 'catkin_ws' for sending data to unity.
+Suppose, you have already had a well-configured `catkin_ws` for sending data to unity.
 - Require a package <ROS-TCP-Endpoint> in your 'catkin_ws'.
 - Require a 'msg' folder where you defined your own message type, it should be in a specific package in your 'catkin_ws'.
 
