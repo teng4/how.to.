@@ -36,6 +36,7 @@ In Unity top menu, find `Robotics` --> `Generate ROS Message`.
 
 - Add a `Scripts` folder inside folder `Assets`.
 - Inside `Scripts` folder, create a new cs script (say, `ROSDataReceiver.cs`) to receive ROS data msg.
+- Create an empty object in the scene, rename it as `ROSDataReceiver`, and attach the `ROSDataReceiver.cs` to it.
 
 Copy-paste the following code into `ROSDataReceiver.cs` for receiving data from ROS.
 
@@ -105,6 +106,25 @@ public class ROSDataReceiver : MonoBehaviour
 - Originally, `com.unity.robotics.urdf-importer@90f353e435` is located in path `youUnityProj/Library/PackageCache/`. You can copy-paste it from `Library/PackageCache` to folder `Packages` for convenience. (Note that, in it, a `Controller` folder with several controller scripts need to be modified for your own use.)
 - Automatically, the imported tool is already attached with a “Controller.cs”.
 
+## Test Unity receives ROS data.
+
+In Terminal(s), do the following:
+
+```
+$ roscore
+
+$ echo $ROS_PACKAGE_PATH
+$ cd catkin_ws2
+$ source devel/setup.bash
+$ echo $ROS_PACKAGE_PATH
+$ roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=127.0.0.1 tcp_port:=10000 //this will launch the bridge between ROS and Unity.
+
+$ echo $ROS_PACKAGE_PATH
+$ cd catkin_ws2
+$ source devel/setup.bash
+$ echo $ROS_PACKAGE_PATH
+$ roslaunch omni_common omni_state4.launch //this will publish data to ROS. And now you should be able to receive data in Unity “ROSDataReceiver” object.
+```
 
 ------
 Created on 2024-09-23.
