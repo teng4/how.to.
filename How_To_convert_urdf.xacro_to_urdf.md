@@ -11,5 +11,5 @@ rosrun xacro xacro --inorder -o ./niryo_one.urdf ./niryo_one.urdf.xacro
 An example of robot URDF source files can be found here [niryo_one_ros](https://github.com/NiryoRobotics/niryo_one_ros).
 
 
-````````````
+------
 Created on 2024-09-23.
