@@ -25,6 +25,7 @@ Command Breakdown:
 
 ```
 rosrun xacro xacro mtm_right_only.urdf.xacro > mtm_right_only.urdf
+rosrun xacro xacro <input.xacro> -o <output.urdf> //(Syntax from ChatGPT)
 ```
 
 Command Breakdown:
