@@ -41,6 +41,7 @@ In Unity top menu, find `Robotics` --> `Generate ROS Message`.
 
 Copy-paste the following code into `ROSDataReceiver.cs` for receiving data from ROS. (Note, this code allows Unity to receive ROS data without importing any URDF robot model.)
 
+
 ```
 using System.Collections;
 using System.Collections.Generic;
@@ -98,10 +99,18 @@ public class ROSDataReceiver : MonoBehaviour
         data_received_a3 = (float)dataMsg.joint_3_angle; //to display the received ROS data.
         data_received_a4 = (float)dataMsg.joint_4_angle; //to display the received ROS data.
         data_received_a5 = (float)dataMsg.joint_5_angle; //to display the received ROS data.
-        data_received_a6 = (float)dataMsg.joint_6_angle; //to display the received ROS data.              
+        data_received_a6 = (float)dataMsg.joint_6_angle; //to display the received ROS data.   
+        
+        //controller.joint_1_target = (float)dataMsg.joint_1_angle; //to display the received ROS data.
+        //controller.joint_2_target = (float)dataMsg.joint_2_angle; //to display the received ROS data.
+        //controller.joint_3_target = (float)dataMsg.joint_3_angle; //to display the received ROS data.
+        //controller.joint_4_target = (float)dataMsg.joint_4_angle; //to display the received ROS data.
+        //controller.joint_5_target = (float)dataMsg.joint_5_angle; //to display the received ROS data.
+        //controller.joint_6_target = (float)dataMsg.joint_6_angle; //to display the received ROS data.           
     }
 }
 ```
+
 
 ## Test Unity receives ROS data.
 
@@ -123,10 +132,49 @@ $ echo $ROS_PACKAGE_PATH
 $ roslaunch omni_common omni_state4.launch //this will publish data to ROS. And now the received data in Unity can be observed in “ROSDataReceiver” object.
 ```
 
+## Error Debugging.
+
+There may have the following warning message when you try to modify the `Controller.cs`.
+
+> The following asset(s) located in immutable packages were unexpectedly altered. Making changes to immutable packages isn't recommended because the changes can be lost without any warning during Package Manager operations.
+>  Packages/com.unity.robotics.urdf-importer/Runtime/Controller/Controller.cs
+
+**Soulution**
+1. Copy-paste the `com.unity.robotics.urdf-importer@90f353e435` from `youUnityProj/Library/PackageCache/` to folder `youUnityProj/Packages`.
+2. Or, Create a new script, say `CustomController.cs` to inherit the original Controller class in `Controller.cs`, then modify in the new script.
+
+**Example of the `CustomController.cs` (not tested).**
+
+```
+using Unity.Robotics.UrdfImporter; // Import the original package namespace
+using UnityEngine;
+
+// Inherit from the existing Controller class
+public class CustomController : Controller
+{
+    // Example of overriding a method from the original Controller class
+    protected override void Start()
+    {
+        // Call the base Start method from Controller
+        base.Start();
+        
+        // Add custom functionality here
+        Debug.Log("Custom controller initialization");
+    }
+
+    // Add any new methods or override other methods from Controller.cs here
+    public void CustomMethod()
+    {
+        Debug.Log("This is a custom method in the custom controller.");
+    }
+}
+```
+
+
 ## Notes.
 
-- Originally, `com.unity.robotics.urdf-importer@90f353e435` is located in path `youUnityProj/Library/PackageCache/`. You can copy-paste it from `Library/PackageCache` to folder `Packages` for convenience. (Note that, in it, a `Controller` folder with several controller scripts need to be modified for your own use.)
-- Automatically, the imported tool is already attached with a “Controller.cs”.
+- Originally, `com.unity.robotics.urdf-importer@90f353e435` is located in path `youUnityProj/Library/PackageCache/`. You can copy-paste it from `Library/PackageCache` to folder `Packages` to avoid system warning message. (Note that, in it, a `Controller` folder with several controller scripts need to be modified for your own use.)
+- When importing a URDF tool/robot, a “Controller.cs” will be attached to the robot object automatically.
 
 
 ------
