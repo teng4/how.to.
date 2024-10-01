@@ -1,4 +1,3 @@
-# 123
 # How To create a customized ROS msg in MATLAB?
 
 ## step-1. Place your custom messages in a location and note the folder path. 
