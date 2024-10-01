@@ -91,7 +91,8 @@ Matlab may need to configure ROS first. If so, first run this cmd in a Ubuntu te
 whereis python #Find the location of python in your pc.
 sudo apt install python3.8-venv
 ```
-Then, in MATLAB go to find `Home->Preferences->ROS Toolbox`, click button `Open ROS Toolbox Preferences`. put the path (e.g., mine is `/usr/bin/python3.8`) in the 'browse' line, and click `Recreate Python Environment`. done.
+Then, in MATLAB go to find `Home->Preferences->ROS Toolbox`, click button `Open ROS Toolbox Preferences`. put the path (e.g., mine is `/usr/bin/python3.8`) in the 'browse' line, and click `Recreate Python Environment`. Done.
+
 
 --------
 Created on 2024-10-01. 
