@@ -1,4 +1,4 @@
-# How To get rotation matrix from PRY angles
+# How To get rotation matrix from RPY angles
 
 ## Summary
 
