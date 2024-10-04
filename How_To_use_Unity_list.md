@@ -5,7 +5,7 @@
 1. declare a `list` variable `dh = new List<float[]>();`.
 1. define a row vector `float[] row1 = { 11.0f, 12.0f, 13.0f, 14.0f };`.
 1. add the row vector to list `dh.Add(row1);`.
-1. print out messages 'print("dh.Count = " + dh.Count)'.
+1. print out messages `print("dh.Count = " + dh.Count)`.
 
 ## Example c# code in Unity
 
