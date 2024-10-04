@@ -36,8 +36,16 @@ print("dh.Capacity = " + dh.Capacity); //= 4
 //print("dh[1][1].Capacity = " + dh[1][1].Capacity); //will error: float no capacity.
 foreach (float[] row in dh)
 {
-   string rowValues = string.Join(", ", row);
-   Debug.Log("Row: " + rowValues);
+    string rowValues = string.Join(", ", row);
+    Debug.Log("Row: " + rowValues);
+}
+
+//try to define another list2.
+var list2 = new List<double> {2014.0, 2015.0, 2016.0, 2017.0};
+foreach (double row in list2)
+{
+    string rowValues = string.Join(", ", row);
+    Debug.Log("list2 Row: " + rowValues);
 }
 ```
 
